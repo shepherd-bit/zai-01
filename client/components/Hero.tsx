@@ -7,7 +7,7 @@ import { ArrowDown, ArrowRight } from "lucide-react";
 const services = [
   {
     title: "Tours",
-    image: "/hero-images/tours.jpg",
+    image: "/hero-images/laundry.jpg",
     rotation: -8,
     zIndex: 1,
   },
@@ -19,7 +19,7 @@ const services = [
   },
   {
     title: "Laundry",
-    image: "/hero-images/laundry.jpg",
+    image: "/hero-images/tours.jpg",
     rotation: 8,
     zIndex: 3,
   },
@@ -57,14 +57,15 @@ export default function Hero() {
           </div>
 
           {/* ZAI Overlay Text */}
-          <h1 className="absolute inset-0 flex items-center justify-center select-none pointer-events-none">
+          <h1 className="absolute inset-0 flex items-center justify-center select-none pointer-events-none" style={{ zIndex: 10, transform: "translateY(-60px)" }}>
             <span className="flex">
               {["Z", "A", "I"].map((letter, i) => (
                 <span
                   key={i}
-                  className="text-[20vw] sm:text-[220px] md:text-[280px] lg:text-[340px] font-black tracking-tighter leading-none text-white/20 pointer-events-auto cursor-default transition-all duration-300 ease-out hover:text-white/40"
+                  className="text-[24vw] sm:text-[264px] md:text-[336px] lg:text-[408px] font-black tracking-tighter leading-none text-transparent pointer-events-auto cursor-default transition-all duration-300 ease-out"
                   style={{
-                    WebkitTextStroke: "2px rgba(255,255,255,0.6)",
+                    WebkitTextStroke: "2px rgba(255,255,255,0.9)",
+                    textShadow: "0 0 20px rgba(255,255,255,0.6), 0 0 40px rgba(255,255,255,0.3), 0 0 60px rgba(255,255,255,0.15)",
                   }}
                 >
                   {letter}
