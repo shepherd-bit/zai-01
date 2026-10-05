@@ -7,23 +7,20 @@ import { ArrowDown, ArrowRight } from "lucide-react";
 const services = [
   {
     title: "Tours",
-    description: "Guided experiences across Kilifi, Mombasa & Lamu",
-    image: "https://picsum.photos/seed/tours/400/300",
-    rotation: -12,
+    image: "/hero-images/tours.jpg",
+    rotation: -8,
     zIndex: 1,
   },
   {
     title: "Stays",
-    description: "Handpicked Airbnb properties for every budget",
-    image: "https://picsum.photos/seed/stays/400/300",
+    image: "/hero-images/stays.jpg",
     rotation: 0,
     zIndex: 2,
   },
   {
     title: "Laundry",
-    description: "Fast, reliable laundry & dry cleaning services",
-    image: "https://picsum.photos/seed/laundry/400/300",
-    rotation: 12,
+    image: "/hero-images/laundry.jpg",
+    rotation: 8,
     zIndex: 3,
   },
 ];
@@ -34,55 +31,46 @@ export default function Hero() {
       {/* Top Main Grid Layout */}
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center my-auto">
 
-        {/* Left Side: Fanned Cards on top, ZAI Outline below */}
-        <div className="relative flex flex-col items-center justify-center py-10">
-
+        {/* Left Side: Fanned Cards with ZAI Overlay */}
+        <div className="relative flex items-center justify-center py-10" style={{ minHeight: "520px" }}>
           {/* Fanned Cards */}
-          <div className="relative flex items-center justify-center w-full max-w-md" style={{ minHeight: "380px" }}>
+          <div className="relative flex items-center justify-center w-full max-w-lg" style={{ minHeight: "440px" }}>
             {services.map((service, i) => (
               <div
                 key={service.title}
-                className="absolute w-56 sm:w-64 md:w-72 transition-all duration-500 ease-out hover:!scale-110 hover:!z-50"
+                className="absolute w-64 sm:w-72 md:w-80 transition-all duration-500 ease-out hover:!scale-110 hover:!z-50"
                 style={{
-                  transform: `rotate(${service.rotation}deg) translateX(${(i - 1) * 120}px)`,
+                  transform: `rotate(${service.rotation}deg) translateX(${(i - 1) * 130}px)`,
                   zIndex: service.zIndex,
                 }}
               >
-                <div className="bg-neutral-950 border border-neutral-800 rounded-2xl overflow-hidden shadow-2xl shadow-black/60">
-                  {/* Card Image */}
-                  <div className="relative h-36 sm:h-40 md:h-44 overflow-hidden">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent" />
-                  </div>
-
-                  {/* Card Content */}
-                  <div className="p-4">
-                    <h3 className="text-lg sm:text-xl font-bold tracking-tight text-white mb-1">
-                      {service.title}
-                    </h3>
-                    <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed">
-                      {service.description}
-                    </p>
-                  </div>
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/60 aspect-[3/4] group">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover"
+                  />
+                  {/* Gradient overlay for text readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                  {/* Title */}
+                  <h3 className="absolute bottom-5 left-5 text-2xl sm:text-3xl font-bold tracking-tight text-white">
+                    {service.title}
+                  </h3>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* ZAI Outline Text below cards */}
-          <h1 className="select-none mt-4">
+          {/* ZAI Overlay Text */}
+          <h1 className="absolute inset-0 flex items-center justify-center select-none pointer-events-none">
             <span className="flex">
               {["Z", "A", "I"].map((letter, i) => (
                 <span
                   key={i}
-                  className="text-[16vw] sm:text-[160px] md:text-[200px] lg:text-[240px] font-black tracking-tighter leading-none text-transparent pointer-events-auto cursor-default transition-all duration-300 ease-out hover:text-white/20"
+                  className="text-[18vw] sm:text-[200px] md:text-[260px] lg:text-[300px] font-black tracking-tighter leading-none text-transparent pointer-events-auto cursor-default transition-all duration-300 ease-out hover:text-white/30"
                   style={{
-                    WebkitTextStroke: "2px rgba(255,255,255,0.8)",
+                    WebkitTextStroke: "2px rgba(255,255,255,0.9)",
                   }}
                 >
                   {letter}
