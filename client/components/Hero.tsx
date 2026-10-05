@@ -51,12 +51,6 @@ export default function Hero() {
                     alt={service.title}
                     className="w-full h-full object-cover"
                   />
-                  {/* Gradient overlay for text readability */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                  {/* Title */}
-                  <h3 className="absolute bottom-5 left-5 text-2xl sm:text-3xl font-bold tracking-tight text-white">
-                    {service.title}
-                  </h3>
                 </div>
               </div>
             ))}
@@ -68,9 +62,9 @@ export default function Hero() {
               {["Z", "A", "I"].map((letter, i) => (
                 <span
                   key={i}
-                  className="text-[18vw] sm:text-[200px] md:text-[260px] lg:text-[300px] font-black tracking-tighter leading-none text-transparent pointer-events-auto cursor-default transition-all duration-300 ease-out hover:text-white/30"
+                  className="text-[20vw] sm:text-[220px] md:text-[280px] lg:text-[340px] font-black tracking-tighter leading-none text-white/20 pointer-events-auto cursor-default transition-all duration-300 ease-out hover:text-white/40"
                   style={{
-                    WebkitTextStroke: "2px rgba(255,255,255,0.9)",
+                    WebkitTextStroke: "2px rgba(255,255,255,0.6)",
                   }}
                 >
                   {letter}
