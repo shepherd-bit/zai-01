@@ -64,8 +64,8 @@ export default function Hero() {
                   key={i}
                   className="text-[24vw] sm:text-[264px] md:text-[336px] lg:text-[408px] font-black tracking-tighter leading-none text-transparent pointer-events-auto cursor-default transition-all duration-300 ease-out"
                   style={{
-                    WebkitTextStroke: "2px rgba(255,255,255,0.9)",
-                    textShadow: "0 0 20px rgba(255,255,255,0.6), 0 0 40px rgba(255,255,255,0.3), 0 0 60px rgba(255,255,255,0.15)",
+                    WebkitTextStroke: "2px rgba(204,255,0,0.9)",
+                    textShadow: "0 0 20px rgba(204,255,0,0.6), 0 0 40px rgba(204,255,0,0.3), 0 0 60px rgba(204,255,0,0.15)",
                   }}
                 >
                   {letter}
