@@ -70,6 +70,7 @@ export interface Config {
     users: User;
     media: Media;
     listings: Listing;
+    'laundry-rates': LaundryRate;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -80,6 +81,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     listings: ListingsSelect<false> | ListingsSelect<true>;
+    'laundry-rates': LaundryRatesSelect<false> | LaundryRatesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -202,6 +204,24 @@ export interface Listing {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "laundry-rates".
+ */
+export interface LaundryRate {
+  id: number;
+  itemName: string;
+  /**
+   * Price in Kenyan Shillings (Ksh)
+   */
+  price: number;
+  /**
+   * Details like service type, turnaround time, pickup info
+   */
+  description?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -235,6 +255,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'listings';
         value: number | Listing;
+      } | null)
+    | ({
+        relationTo: 'laundry-rates';
+        value: number | LaundryRate;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -336,6 +360,17 @@ export interface ListingsSelect<T extends boolean = true> {
       };
   pricePerNight?: T;
   airbnbLink?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "laundry-rates_select".
+ */
+export interface LaundryRatesSelect<T extends boolean = true> {
+  itemName?: T;
+  price?: T;
+  description?: T;
   updatedAt?: T;
   createdAt?: T;
 }
