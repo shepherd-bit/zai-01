@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "My Portfolio / Website",
+  title: "Zai Tours & Stays",
   description: "Built with Next.js, Tailwind CSS, and TypeScript",
 };
 
