@@ -69,6 +69,7 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    listings: Listing;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -78,6 +79,7 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    listings: ListingsSelect<false> | ListingsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -161,6 +163,79 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
+  sizes?: {
+    cardThumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "listings".
+ */
+export interface Listing {
+  id: number;
+  title: string;
+  /**
+   * Generated from the title when left blank.
+   */
+  slug?: string | null;
+  status: 'draft' | 'published';
+  /**
+   * Image shown on the listing card.
+   */
+  thumbnail: number | Media;
+  /**
+   * Maximum number of guests.
+   */
+  guestCapacity: number;
+  /**
+   * Shown on the listing card.
+   */
+  location: {
+    city: string;
+    state?: string | null;
+    country: string;
+    address?: string | null;
+  };
+  /**
+   * Amenities shown on the listing card.
+   */
+  features: (
+    | 'wifi'
+    | 'kitchen'
+    | 'laundry-machine'
+    | 'air-conditioning'
+    | 'heating'
+    | 'parking'
+    | 'pool'
+    | 'pet-friendly'
+    | 'tv'
+    | 'workspace'
+    | 'dishwasher'
+  )[];
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -193,6 +268,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'listings';
+        value: number | Listing;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -276,6 +355,43 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+  sizes?:
+    | T
+    | {
+        cardThumbnail?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "listings_select".
+ */
+export interface ListingsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  status?: T;
+  thumbnail?: T;
+  guestCapacity?: T;
+  location?:
+    | T
+    | {
+        city?: T;
+        state?: T;
+        country?: T;
+        address?: T;
+      };
+  features?: T;
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
