@@ -69,6 +69,7 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    listings: Listing;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -78,6 +79,7 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    listings: ListingsSelect<false> | ListingsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -164,6 +166,42 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "listings".
+ */
+export interface Listing {
+  id: number;
+  title: string;
+  thumbnail: number | Media;
+  /**
+   * Maximum number of occupants
+   */
+  capacity: number;
+  /**
+   * Number of bedrooms
+   */
+  bedrooms: number;
+  /**
+   * Property features and amenities
+   */
+  features?:
+    | {
+        feature: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Price per night in Kenyan Shillings (Ksh)
+   */
+  pricePerNight: number;
+  /**
+   * URL to the Airbnb listing
+   */
+  airbnbLink: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -193,6 +231,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'listings';
+        value: number | Listing;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -276,6 +318,26 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "listings_select".
+ */
+export interface ListingsSelect<T extends boolean = true> {
+  title?: T;
+  thumbnail?: T;
+  capacity?: T;
+  bedrooms?: T;
+  features?:
+    | T
+    | {
+        feature?: T;
+        id?: T;
+      };
+  pricePerNight?: T;
+  airbnbLink?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
