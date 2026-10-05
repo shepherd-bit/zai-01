@@ -34,10 +34,11 @@ export default function Hero() {
       {/* Top Main Grid Layout */}
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center my-auto">
 
-        {/* Left Side: Fanned Cards with ZAI Overlay */}
-        <div className="relative flex items-center justify-center py-10" style={{ minHeight: "480px" }}>
+        {/* Left Side: Fanned Cards on top, ZAI Outline below */}
+        <div className="relative flex flex-col items-center justify-center py-10">
+
           {/* Fanned Cards */}
-          <div className="relative flex items-center justify-center w-full max-w-md" style={{ minHeight: "400px" }}>
+          <div className="relative flex items-center justify-center w-full max-w-md" style={{ minHeight: "380px" }}>
             {services.map((service, i) => (
               <div
                 key={service.title}
@@ -73,13 +74,16 @@ export default function Hero() {
             ))}
           </div>
 
-          {/* ZAI Overlay Text */}
-          <h1 className="absolute inset-0 flex items-center justify-center select-none pointer-events-none">
+          {/* ZAI Outline Text below cards */}
+          <h1 className="select-none mt-4">
             <span className="flex">
               {["Z", "A", "I"].map((letter, i) => (
                 <span
                   key={i}
-                  className="text-[16vw] sm:text-[180px] md:text-[220px] lg:text-[260px] font-black tracking-tighter leading-none text-white/90 pointer-events-auto cursor-default transition-all duration-300 ease-out hover:text-white hover:scale-110 hover:-translate-y-4 hover:drop-shadow-[0_0_30px_rgba(255,255,255,0.4)]"
+                  className="text-[16vw] sm:text-[160px] md:text-[200px] lg:text-[240px] font-black tracking-tighter leading-none text-transparent pointer-events-auto cursor-default transition-all duration-300 ease-out hover:text-white/20"
+                  style={{
+                    WebkitTextStroke: "2px rgba(255,255,255,0.8)",
+                  }}
                 >
                   {letter}
                 </span>
