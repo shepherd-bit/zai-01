@@ -261,26 +261,20 @@ export const HeroSection: React.FC = () => {
               transition={{ duration: 0.7, delay: 0.4, ease: [0.2, 0.8, 0.2, 1] }}
               className="mt-6 sm:mt-8 flex flex-row items-center justify-center gap-3.5 max-lg:justify-center"
             >
-              {/* Explore Services CTA (Dark border button with down arrow) */}
+              {/* Explore Services CTA (Dark border button) */}
               <a
                 href="#transport"
-                className="h-[46px] sm:h-[50px] px-6 sm:px-7 rounded-md border border-white/20 bg-white/[0.03] hover:bg-white/[0.08] hover:border-white/40 text-white font-bold text-[12px] sm:text-[13px] tracking-[0.14em] uppercase inline-flex items-center gap-2.5 transition duration-200 backdrop-blur-sm group"
+                className="h-[46px] sm:h-[50px] px-6 sm:px-7 rounded-md border border-white/20 bg-white/[0.03] hover:bg-white/[0.08] hover:border-white/40 text-white font-bold text-[12px] sm:text-[13px] tracking-[0.14em] uppercase inline-flex items-center gap-2.5 transition duration-200 backdrop-blur-sm whitespace-nowrap"
               >
                 <span>EXPLORE SERVICES</span>
-                <span className="text-[14px] transition-transform duration-200 group-hover:translate-y-0.5">
-                  ↓
-                </span>
               </a>
 
-              {/* View Stays CTA (Solid high-contrast button with right arrow) */}
+              {/* View Stays CTA (Solid high-contrast button) */}
               <a
                 href="#stays"
-                className="h-[46px] sm:h-[50px] px-6 sm:px-7 rounded-md bg-[#F5F1EB] text-[#0E0E0F] hover:bg-white font-bold text-[12px] sm:text-[13px] tracking-[0.14em] uppercase inline-flex items-center gap-2.5 transition duration-200 shadow-lg shadow-white/5 group"
+                className="h-[46px] sm:h-[50px] px-6 sm:px-7 rounded-md bg-[#F5F1EB] text-[#0E0E0F] hover:bg-white font-bold text-[12px] sm:text-[13px] tracking-[0.14em] uppercase inline-flex items-center gap-2.5 transition duration-200 shadow-lg shadow-white/5 whitespace-nowrap"
               >
                 <span>VIEW STAYS</span>
-                <span className="text-[14px] transition-transform duration-200 group-hover:translate-x-0.5">
-                  →
-                </span>
               </a>
             </motion.div>
           </div>
