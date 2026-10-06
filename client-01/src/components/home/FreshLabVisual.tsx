@@ -19,9 +19,15 @@ export const FreshLabVisual: React.FC<FreshLabVisualProps> = ({ pickupEnabled })
 
         {/* Animated Washing Machine Drum Graphic */}
         <div className="mt-6 relative aspect-[1/1.05] rounded-[28px] bg-[#0E0E0F] overflow-hidden border border-black/10 grid place-items-center">
+          {/* Washer Image Background */}
           <div
             aria-hidden="true"
-            className="absolute inset-0 bg-[radial-gradient(100%_100%_at_50%_0%,#2E3A2F_0%,#0E0E0F_70%)]"
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: "url('/washer/washing-machine.jpg')" }}
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-black/30"
           />
 
           {/* Rotating Outer Drum Rim */}
@@ -115,7 +121,7 @@ export const FreshLabVisual: React.FC<FreshLabVisualProps> = ({ pickupEnabled })
             <span className="font-bold">Pickup active:</span>{' '}
             {pickupEnabled
               ? 'Driver will collect +200 KES within 10km radius'
-              : 'Drop at Greenpark Gate • 8am-8pm daily'}
+              : 'Drop at Greenpark Gate, Watamu • 8am-8pm daily'}
           </div>
         </div>
       </div>
