@@ -22,7 +22,7 @@ export default function App() {
   )}`;
 
   return (
-    <div className="relative min-h-screen bg-[#0E0E0F] text-[#F5F1EB] antialiased selection:bg-[#FF5A2C] selection:text-white overflow-x-hidden max-w-[100vw]">
+    <div className="relative min-h-screen bg-[#0E0E0F] text-[#F5F1EB] antialiased selection:bg-[#FF5A2C] selection:text-white overflow-x-hidden max-w-[100vw] pt-[57px]">
       {/* Noise background texture */}
       <NoiseOverlay />
 

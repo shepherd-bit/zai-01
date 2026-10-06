@@ -34,7 +34,7 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#000000] border-b border-white/[0.08] backdrop-blur-md">
+    <nav className="fixed top-0 z-50 w-full bg-[#000000] border-b border-white/[0.08] backdrop-blur-md">
       <div className="mx-auto max-w-[1700px] px-4 sm:px-6 md:px-10 h-[56px] flex items-center justify-between">
         
         {/* Left: Brand Identity Text */}
