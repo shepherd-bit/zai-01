@@ -31,11 +31,20 @@ export const TransportSection: React.FC = () => {
 
         {/* Bento Grid */}
         <div className="mt-12 grid md:grid-cols-12 gap-5 auto-rows-[1fr]">
-          {/* Card 1: Airport Pickups (JKIA / Wilson) */}
+          {/* Card 1: Airport Pickups (MBA / Ukunda) */}
           <motion.div
             whileHover={{ y: -6 }}
             className="md:col-span-7 group relative rounded-[28px] bg-[#151515] border border-white/[0.07] p-8 md:p-10 overflow-hidden"
           >
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-cover bg-center opacity-60"
+              style={{ backgroundImage: "url('/transport-images/airport.jpg')" }}
+            />
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-gradient-to-br from-[#151515]/60 via-[#151515]/40 to-[#151515]/20"
+            />
             <div
               aria-hidden="true"
               className="absolute top-0 right-0 w-[420px] h-[420px] bg-[#FF5A2C]/20 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/3 group-hover:bg-[#FF5A2C]/30 transition"
@@ -53,7 +62,7 @@ export const TransportSection: React.FC = () => {
             <h3 className="relative mt-8 text-[32px] md:text-[44px] font-black tracking-[-0.04em] leading-[0.9]">
               Airport Pickups
             </h3>
-            <p className="relative mt-4 max-w-[480px] text-[15px] leading-[1.6] text-white/60">
+            <p className="relative mt-4 max-w-[480px] text-[15px] leading-[1.6] text-white">
               We pick you up from the airport in 1 call. Flight delayed? We track it.
               Landing at 2am? We're awake. Fixed KES fare to Kilifi, Mombasa, Diani, Malindi.
             </p>
@@ -79,7 +88,7 @@ export const TransportSection: React.FC = () => {
                     className="h-full bg-[#FF5A2C]"
                   />
                 </div>
-                <div className="mt-2 flex justify-between text-[10px] uppercase tracking-widest opacity-50">
+                <div className="mt-2 flex justify-between text-[10px] uppercase tracking-widest">
                   <span>MBA T1</span>
                   <span>Kilifi 45min</span>
                 </div>
@@ -92,6 +101,15 @@ export const TransportSection: React.FC = () => {
             whileHover={{ y: -6 }}
             className="md:col-span-5 group relative rounded-[28px] bg-[#F5F1EB] text-[#0E0E0F] p-8 md:p-10 overflow-hidden"
           >
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-cover bg-center opacity-50"
+              style={{ backgroundImage: "url('/transport-images/hire-van.jpg')" }}
+            />
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-gradient-to-br from-[#F5F1EB]/60 via-[#F5F1EB]/40 to-[#F5F1EB]/20"
+            />
             <div
               aria-hidden="true"
               className="absolute -top-20 -right-20 w-[280px] h-[280px] bg-[#D9FF66] rounded-full blur-[20px] opacity-60"
@@ -109,7 +127,7 @@ export const TransportSection: React.FC = () => {
             <h3 className="relative mt-8 text-[32px] font-black tracking-[-0.04em] leading-[0.9]">
               Car Hires
             </h3>
-            <p className="relative mt-3 text-[14px] leading-[1.6] opacity-70">
+            <p className="relative mt-3 text-[14px] leading-[1.6]">
               Private tours with pro drivers who know every shortcut from Kilifi to Diani,
               Malindi, Watamu, Mombasa. Fuel inclusive options.
             </p>
@@ -136,6 +154,15 @@ export const TransportSection: React.FC = () => {
           >
             <div
               aria-hidden="true"
+              className="absolute inset-0 bg-cover bg-center opacity-60"
+              style={{ backgroundImage: "url('/transport-images/sgr-train.jpg')" }}
+            />
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-gradient-to-r from-[#2E3A2F]/60 via-[#2E3A2F]/40 to-[#2E3A2F]/20"
+            />
+            <div
+              aria-hidden="true"
               className="absolute left-0 top-0 bottom-0 w-[55%] bg-gradient-to-r from-[#D9FF66]/15 to-transparent pointer-events-none"
             />
 
@@ -152,7 +179,7 @@ export const TransportSection: React.FC = () => {
               <h3 className="mt-6 text-[32px] md:text-[44px] font-black tracking-[-0.04em] leading-[0.9]">
                 Train Station Pickups
               </h3>
-              <p className="mt-4 max-w-[520px] text-[15px] leading-[1.6] text-white/60">
+              <p className="mt-4 max-w-[520px] text-[15px] leading-[1.6] text-white">
                 SGR Mombasa Terminus to your Airbnb in 30 mins. We wait at Mombasa SGR.
                 No haggling, fixed fare, M-Pesa on arrival.
               </p>
@@ -170,7 +197,7 @@ export const TransportSection: React.FC = () => {
             {/* Right Train Timetable Board */}
             <div className="relative">
               <div className="rounded-[20px] bg-[#0E0E0F]/60 backdrop-blur border border-white/10 p-5">
-                <div className="flex justify-between text-[11px] tracking-widest opacity-50 uppercase">
+                <div className="flex justify-between text-[11px] tracking-widest uppercase">
                   <span>SGR Mombasa Terminus</span>
                   <span>• Live</span>
                 </div>
@@ -182,7 +209,7 @@ export const TransportSection: React.FC = () => {
                       className="flex gap-3 rounded-[12px] bg-white/[0.06] border border-white/[0.06] p-3"
                     >
                       <div className="text-[12px] font-bold">{schedule.time}</div>
-                      <div className="flex-1 text-[12px] leading-tight opacity-80">
+                      <div className="flex-1 text-[12px] leading-tight">
                         {schedule.train}
                       </div>
                       <div className="text-[10px] px-2 py-1 rounded-full bg-[#D9FF66] text-black font-bold h-fit">
