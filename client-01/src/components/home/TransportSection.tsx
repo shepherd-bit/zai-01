@@ -4,7 +4,7 @@ import { FLEET_OPTIONS, SGR_SCHEDULES } from '../../data/transport';
 
 export const TransportSection: React.FC = () => {
   return (
-    <section id="transport" className="relative bg-[#0E0E0F] py-24 md:py-32">
+    <section id="transport" className="relative bg-[#0E0E0F] py-24 md:py-32 max-md:scale-[0.85] max-md:origin-top">
       <div className="mx-auto max-w-[1600px] px-6 md:px-10">
         {/* Section Header */}
         <div className="flex flex-wrap items-start justify-between gap-8">
