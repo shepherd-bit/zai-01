@@ -46,7 +46,7 @@ export const TransportSection: React.FC = () => {
                 ✈
               </div>
               <span className="h-7 px-3 rounded-full bg-white/10 border border-white/10 text-[11px] font-bold tracking-wide grid place-items-center">
-                JKIA / WILSON
+                MBA / UKUNDA
               </span>
             </div>
 
@@ -55,7 +55,7 @@ export const TransportSection: React.FC = () => {
             </h3>
             <p className="relative mt-4 max-w-[480px] text-[15px] leading-[1.6] text-white/60">
               We pick you up from the airport in 1 call. Flight delayed? We track it.
-              Landing at 2am? We're awake. Fixed KES fare to Athi River, Syokimau, Mlolongo.
+              Landing at 2am? We're awake. Fixed KES fare to Kilifi, Mombasa, Diani, Malindi.
             </p>
 
             <div className="relative mt-8 flex flex-wrap gap-3">
@@ -80,8 +80,8 @@ export const TransportSection: React.FC = () => {
                   />
                 </div>
                 <div className="mt-2 flex justify-between text-[10px] uppercase tracking-widest opacity-50">
-                  <span>JKIA T1A</span>
-                  <span>Athi River 18min</span>
+                  <span>MBA T1</span>
+                  <span>Kilifi 45min</span>
                 </div>
               </div>
             </div>
@@ -110,8 +110,8 @@ export const TransportSection: React.FC = () => {
               Car Hires
             </h3>
             <p className="relative mt-3 text-[14px] leading-[1.6] opacity-70">
-              Private tours with pro drivers who know every shortcut from Athi River to Amboseli,
-              Naivasha, Nairobi CBD. Fuel inclusive options.
+              Private tours with pro drivers who know every shortcut from Kilifi to Diani,
+              Malindi, Watamu, Mombasa. Fuel inclusive options.
             </p>
 
             <div className="relative mt-8 grid grid-cols-3 gap-2">
@@ -153,7 +153,7 @@ export const TransportSection: React.FC = () => {
                 Train Station Pickups
               </h3>
               <p className="mt-4 max-w-[520px] text-[15px] leading-[1.6] text-white/60">
-                SGR terminus to your Airbnb in 45 mins. We wait at Syokimau or Athi River SGR.
+                SGR Mombasa Terminus to your Airbnb in 30 mins. We wait at Mombasa SGR.
                 No haggling, fixed fare, M-Pesa on arrival.
               </p>
 
@@ -171,7 +171,7 @@ export const TransportSection: React.FC = () => {
             <div className="relative">
               <div className="rounded-[20px] bg-[#0E0E0F]/60 backdrop-blur border border-white/10 p-5">
                 <div className="flex justify-between text-[11px] tracking-widest opacity-50 uppercase">
-                  <span>SGR Nairobi Terminus</span>
+                  <span>SGR Mombasa Terminus</span>
                   <span>• Live</span>
                 </div>
 
@@ -202,7 +202,7 @@ export const TransportSection: React.FC = () => {
             500+ pickups • 4.9 rating • Under 15min response
           </div>
           <div className="px-5 py-3 rounded-full bg-[#FF5A2C] text-white">
-            JKIA ↔ Athi River • Day & Night
+            MBA ↔ Kilifi • Day & Night
           </div>
         </div>
       </div>
