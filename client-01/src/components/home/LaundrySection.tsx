@@ -86,28 +86,28 @@ export const LaundrySection: React.FC = () => {
             </div>
 
             {/* Pricing Cards Grid */}
-            <div className="mt-10 grid sm:grid-cols-2 gap-4">
+            <div className="mt-6 md:mt-10 grid sm:grid-cols-2 gap-3 md:gap-4">
               {LAUNDRY_SERVICES.map((service) => (
                 <motion.div
                   key={service.title}
                   whileHover={{ scale: 1.02 }}
-                  className="group relative rounded-[22px] bg-[#151515] border border-white/[0.07] p-6 hover:border-white/20 transition-colors"
+                  className="group relative rounded-[16px] md:rounded-[22px] bg-[#151515] border border-white/[0.07] p-4 md:p-6 hover:border-white/20 transition-colors"
                 >
                   <div className="flex justify-between items-start">
-                    <div className="w-10 h-10 rounded-full bg-white/[0.06] border border-white/10 grid place-items-center text-[14px]">
+                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/[0.06] border border-white/10 grid place-items-center text-[12px] md:text-[14px]">
                       {service.icon}
                     </div>
-                    <span className="text-[11px] px-2 py-1 rounded-full bg-[#D9FF66]/15 text-[#D9FF66] border border-[#D9FF66]/20 font-bold tracking-wide">
+                    <span className="text-[9px] md:text-[11px] px-1.5 md:px-2 py-0.5 md:py-1 rounded-full bg-[#D9FF66]/15 text-[#D9FF66] border border-[#D9FF66]/20 font-bold tracking-wide">
                       {service.unit}
                     </span>
                   </div>
 
-                  <div className="mt-4 font-bold tracking-tight leading-tight">
+                  <div className="mt-2.5 md:mt-4 font-bold tracking-tight leading-tight">
                     {service.title}
                   </div>
-                  <div className="mt-1 flex items-baseline gap-2">
-                    <span className="text-[26px] font-black tracking-tight">{service.price}</span>
-                    <span className="text-[12px] opacity-50">{service.desc}</span>
+                  <div className="mt-1 flex items-baseline gap-1.5 md:gap-2">
+                    <span className="text-[20px] md:text-[26px] font-black tracking-tight">{service.price}</span>
+                    <span className="text-[10px] md:text-[12px] opacity-50">{service.desc}</span>
                   </div>
                 </motion.div>
               ))}
