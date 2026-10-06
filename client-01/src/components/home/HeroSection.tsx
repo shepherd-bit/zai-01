@@ -259,7 +259,7 @@ export const HeroSection: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.4, ease: [0.2, 0.8, 0.2, 1] }}
-              className="mt-6 sm:mt-8 flex flex-row items-center justify-center gap-3.5 max-lg:justify-center"
+              className="mt-6 sm:mt-8 flex flex-row items-center justify-start gap-3.5 max-lg:w-full max-lg:justify-center"
             >
               {/* Explore Services CTA (Dark border button) */}
               <a
