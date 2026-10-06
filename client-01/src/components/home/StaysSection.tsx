@@ -27,9 +27,8 @@ export const StaysSection: React.FC = () => {
         </div>
 
         {/* Stays Grid */}
-        <div className="mt-14 grid md:grid-cols-12 gap-5">
-          {STAYS_DATA.map((stay, idx) => {
-            const isWideCard = idx === 0 || idx === 5;
+        <div className="mt-14 grid md:grid-cols-2 gap-5">
+          {STAYS_DATA.slice(0, 4).map((stay, idx) => {
             return (
               <motion.div
                 key={stay.name}
@@ -38,19 +37,15 @@ export const StaysSection: React.FC = () => {
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ delay: idx * 0.07 }}
                 whileHover={{ y: -6 }}
-                className={`${
-                  isWideCard ? 'md:col-span-8' : 'md:col-span-4'
-                } group relative rounded-[28px] bg-white border border-black/[0.06] p-4 overflow-hidden shadow-sm`}
+                className="group relative rounded-[28px] bg-white border border-black/[0.06] p-4 overflow-hidden shadow-sm"
               >
-                {/* Visual Thumbnail Area with Ambient Architectural Gradient */}
+                {/* Visual Thumbnail Area */}
                 <div className="relative aspect-[1.6/1] rounded-[20px] overflow-hidden bg-[#0E0E0F]">
                   <div
                     aria-hidden="true"
-                    className="absolute inset-0 opacity-90 transition-transform duration-700 group-hover:scale-105"
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
                     style={{
-                      background: `radial-gradient(120% 120% at ${20 + idx * 12}% ${
-                        30 + idx * 8
-                      }%, #FF5A2C 0%, #2E3A2F 35%, #0E0E0F 70%)`,
+                      backgroundImage: `url('/stays/stay-${idx + 1}.jpg')`,
                     }}
                   />
                   <div
@@ -95,7 +90,7 @@ export const StaysSection: React.FC = () => {
                 </div>
 
                 {/* Card Meta & Nightly Rate */}
-                <div className="px-2 pt-4 pb-2 flex justify-between items-center">
+                <div className="px-2 pt-4 pb-2 flex justify-between items-end">
                   <div>
                     <div className="text-[12px] opacity-50 tracking-wide">{stay.location}</div>
                     <div className="mt-2 flex flex-wrap gap-2 text-[10px] font-bold tracking-wide">
@@ -118,6 +113,17 @@ export const StaysSection: React.FC = () => {
                       KES {stay.price}
                       <span className="text-[11px] font-bold opacity-40">/night</span>
                     </div>
+                    <a
+                      href={CONTACT_INFO.socials.airbnb}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-flex items-center gap-2 h-[36px] px-4 rounded-full bg-[#0E0E0F] text-[#F5F1EB] text-[11px] font-bold tracking-wide hover:bg-black transition"
+                    >
+                      Book on Airbnb
+                      <span className="w-5 h-5 rounded-full bg-[#FF5A2C] text-white grid place-items-center text-[10px]">
+                        →
+                      </span>
+                    </a>
                   </div>
                 </div>
               </motion.div>
