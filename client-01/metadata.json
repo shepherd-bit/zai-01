@@ -1,0 +1,6 @@
+{
+  "name": "ZAI Tours & Stays",
+  "description": "Private transport, curated Airbnbs, and crisp laundry in Athi River, JKIA, SGR & Nairobi Metro. Handled in one call.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
