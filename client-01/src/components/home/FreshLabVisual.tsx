@@ -12,7 +12,7 @@ export const FreshLabVisual: React.FC<FreshLabVisualProps> = ({ pickupEnabled })
         {/* Lab Header */}
         <div className="flex justify-between items-center">
           <div className="text-[12px] font-black tracking-[0.2em] uppercase opacity-60">
-            ZAI FRESH LAB • ATHI RIVER
+            ZAI FRESH LAB • KILIFI
           </div>
           <div className="w-2 h-2 rounded-full bg-[#FF5A2C] animate-pulse" />
         </div>
@@ -34,7 +34,7 @@ export const FreshLabVisual: React.FC<FreshLabVisualProps> = ({ pickupEnabled })
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ repeat: Infinity, duration: 6, ease: 'linear' }}
-            className="relative w-[62%] aspect-square rounded-full border-[14px] border-[#1C1C1C] bg-[#111] shadow-[inset_0_0_40px_rgba(0,0,0,0.8)] grid place-items-center"
+            className="relative w-[42%] aspect-square rounded-full border-[10px] border-[#1C1C1C] bg-[#111] shadow-[inset_0_0_40px_rgba(0,0,0,0.8)] grid place-items-center"
           >
             {/* Inner Window */}
             <div className="w-[78%] aspect-square rounded-full border border-white/10 grid place-items-center">
