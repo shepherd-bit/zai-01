@@ -25,8 +25,26 @@ export const HeroSection: React.FC = () => {
       {/* Main Hero Container filling the upper/middle viewport space */}
       <motion.div
         style={{ y: heroY, opacity: heroOpacity }}
-        className="mx-auto max-w-[1600px] w-full px-4 sm:px-6 md:px-10 pt-6 sm:pt-10 md:pt-12 pb-4 flex-1 flex flex-col justify-center"
+        className="mx-auto max-w-[1600px] w-full px-4 sm:px-6 md:px-10 pt-6 sm:pt-10 md:pt-12 pb-4 flex-1 flex flex-col justify-center max-lg:scale-[0.85] max-lg:origin-top"
       >
+        {/* Mobile: Large ZAI + TOURS & STAYS at top */}
+        <motion.div
+          initial={{ scale: 0.95, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          className="hidden max-lg:flex flex-col items-center justify-center mb-8"
+        >
+          <div className="flex items-baseline font-black tracking-[-0.05em] leading-none text-white select-none drop-shadow-[0_25px_50px_rgba(0,0,0,0.95)]">
+            <span className="text-[110px] sm:text-[150px] md:text-[180px] font-black uppercase text-[#F5F1EB]">
+              ZAI
+            </span>
+            <span className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 rounded-full bg-[#FF5A2C] ml-1.5 sm:ml-2.5 -translate-y-2 sm:-translate-y-4 md:-translate-y-5 inline-block shadow-lg shadow-[#FF5A2C]/60" />
+          </div>
+          <div className="font-black text-[46px] sm:text-[60px] md:text-[72px] tracking-[-0.04em] leading-[0.88] text-white uppercase select-none mt-2">
+            TOURS &amp; STAYS
+          </div>
+        </motion.div>
+
         {/* Main Grid: Left Staggered Visual Cards with Solid Bold ZAI / Right Content */}
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 sm:gap-10 lg:gap-16 items-center my-auto">
           
@@ -181,7 +199,7 @@ export const HeroSection: React.FC = () => {
                 initial={{ scale: 0.95, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute inset-0 flex items-center justify-center pointer-events-none z-30"
+                className="absolute inset-0 flex items-center justify-center pointer-events-none z-30 max-lg:hidden"
               >
                 <div className="flex items-baseline font-black tracking-[-0.05em] leading-none text-white select-none drop-shadow-[0_25px_50px_rgba(0,0,0,0.95)]">
                   <span className="text-[110px] sm:text-[150px] md:text-[180px] lg:text-[195px] font-black uppercase text-[#F5F1EB]">
@@ -195,9 +213,9 @@ export const HeroSection: React.FC = () => {
           </div>
 
           {/* Right Column: Typography, Copy & Action Buttons */}
-          <div className="flex flex-col justify-center order-1 lg:order-2 pl-0 lg:pl-4">
-            {/* Main Headline */}
-            <h1 className="font-black text-[46px] sm:text-[60px] md:text-[72px] lg:text-[80px] xl:text-[92px] tracking-[-0.04em] leading-[0.88] text-white uppercase select-none">
+          <div className="flex flex-col justify-center order-1 lg:order-2 pl-0 lg:pl-4 max-lg:items-center max-lg:text-center">
+            {/* Main Headline - hidden on mobile */}
+            <h1 className="font-black text-[46px] sm:text-[60px] md:text-[72px] lg:text-[80px] xl:text-[92px] tracking-[-0.04em] leading-[0.88] text-white uppercase select-none max-lg:hidden">
               <motion.span
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -241,7 +259,7 @@ export const HeroSection: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.4, ease: [0.2, 0.8, 0.2, 1] }}
-              className="mt-6 sm:mt-8 flex flex-wrap items-center gap-3.5"
+              className="mt-6 sm:mt-8 flex flex-row items-center justify-center gap-3.5 max-lg:justify-center"
             >
               {/* Explore Services CTA (Dark border button with down arrow) */}
               <a
@@ -277,7 +295,7 @@ export const HeroSection: React.FC = () => {
           className="mt-auto pt-6 pb-2 border-t border-white/[0.08] grid grid-cols-1 md:grid-cols-3 items-center gap-3 text-[11px] sm:text-[12px] tracking-[0.18em] uppercase font-semibold text-white/60"
         >
           {/* Left: — BASED IN KILIFI */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 max-lg:hidden">
             <span className="w-5 h-5 rounded-full border border-white/25 grid place-items-center text-[9px] font-black text-white/80 shrink-0">
               N
             </span>
@@ -285,7 +303,7 @@ export const HeroSection: React.FC = () => {
           </div>
 
           {/* Center: WHATSAPP 24/7 • */}
-          <div className="flex items-center justify-start md:justify-center">
+          <div className="flex items-center justify-start md:justify-center max-lg:hidden">
             <a
               href={`https://wa.me/${CONTACT_INFO.whatsappNumber}?text=${encodeURIComponent(
                 'Hi Zai Tours & Stays, I would like to make an inquiry.'
@@ -300,7 +318,7 @@ export const HeroSection: React.FC = () => {
           </div>
 
           {/* Right: KILIFI . MOMBASA . LAMU */}
-          <div className="flex items-center justify-start md:justify-end gap-2 text-white/50">
+          <div className="flex items-center justify-start md:justify-end gap-2 text-white/50 max-lg:justify-center max-lg:col-span-full">
             <span>KILIFI</span>
             <span className="text-white/30">•</span>
             <span>MOMBASA</span>
