@@ -16,7 +16,7 @@ export const HeroSection: React.FC = () => {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-[calc(100vh-56px)] flex flex-col justify-between overflow-hidden bg-[#0E0E0F]"
+      className="relative min-h-[calc(100svh-56px)] md:min-h-[calc(100vh-56px)] flex flex-col justify-between overflow-hidden bg-[#0E0E0F]"
     >
       {/* Ambient background glow matching site theme */}
       <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[540px] h-[540px] bg-[#FF5A2C]/[0.05] rounded-full blur-[160px] pointer-events-none" />
@@ -25,7 +25,7 @@ export const HeroSection: React.FC = () => {
       {/* Main Hero Container filling the upper/middle viewport space */}
       <motion.div
         style={{ y: heroY, opacity: heroOpacity }}
-        className="mx-auto max-w-[1600px] w-full px-4 sm:px-6 md:px-10 pt-6 sm:pt-10 md:pt-12 pb-4 flex-1 flex flex-col justify-center max-lg:scale-[0.85] max-lg:origin-top"
+        className="mx-auto max-w-[1600px] w-full px-4 sm:px-6 md:px-10 pt-6 sm:pt-10 md:pt-12 pb-4 flex-1 flex flex-col justify-center"
       >
         {/* Mobile: Large ZAI + TOURS & STAYS at top */}
         <motion.div
