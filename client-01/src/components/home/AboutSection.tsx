@@ -11,16 +11,16 @@ export const AboutSection: React.FC = () => {
           </div>
 
           <blockquote className="mt-6 font-black tracking-[-0.05em] leading-[0.9] text-[36px] md:text-[64px]">
-            “Started with one car, one apartment, and a promise:{' '}
+            "Nobody should feel lost on a vacation tour.{' '}
             <span className="text-[#FF5A2C]">
-              no one should land in Kenya and feel lost.
+              We are here for you.
             </span>
-            ”
+            "
           </blockquote>
 
           <div className="mt-12 grid grid-cols-3 gap-4 max-w-[560px]">
             {[
-              { n: '2022', l: 'Founded in Athi River' },
+              { n: '2022', l: 'Founded in Kilifi' },
               { n: '6', l: 'Curated stays' },
               { n: '24/7', l: 'On-call driver' },
             ].map((stat) => (
@@ -43,32 +43,28 @@ export const AboutSection: React.FC = () => {
         <div className="lg:pt-10">
           <div className="rounded-[28px] bg-white border border-black/5 p-8 md:p-10 shadow-sm">
             <div className="w-12 h-12 rounded-full bg-[#0E0E0F] text-[#F5F1EB] grid place-items-center font-black">
-              T
+              R
             </div>
 
             <h3 className="mt-6 font-black text-[22px] tracking-tight leading-tight">
-              Titus Oluoch built Zai for transit travelers.
+              Rashid is a Licensed Tour Driver &amp; Airbnb Superhost.
             </h3>
 
             <p className="mt-4 text-[15px] leading-[1.6] opacity-70">
-              Athi River is 12 minutes from JKIA, 8 from SGR Syokimau, but most visitors get stuck
-              with boda prices, lost bags, and damp Airbnbs. Titus started driving neighbors from
-              the airport in his first Toyota. Then he listed his own 1BR. Then his cousin's laundry
-              shop joined.
+              Based in Kilifi, Coastal Kenya. Rashid knows every shortcut from Moi International
+              Airport to Diani, Malindi, and Watamu. Flight tracked, fixed fare, no haggling.
             </p>
 
             <p className="mt-4 text-[15px] leading-[1.6] opacity-70">
-              Today Zai Tours &amp; Stays is a small, tight crew: licensed tour drivers, Superhost-track
-              Airbnb hosts, and laundry pros who fold like Uniqlo. We know which gate at JKIA floods
-              when it rains, which SGR coach has extra legroom, and which apartment has the best
-              sunset over Lukenya Hills.
+              Zai Tours &amp; Stays delivers reliable airport pickups, curated coastal Airbnbs,
+              and hotel-grade laundry — all handled by one tight, competent crew.
             </p>
 
             {/* Guiding Principles */}
             <div className="mt-8 grid grid-cols-1 gap-3">
               {[
                 { k: 'Punctual', v: 'We track flights & SGR times. Early is on time.' },
-                { k: 'Local', v: 'Athi River born. We know shortcuts, not just highways.' },
+                { k: 'Local', v: 'Kilifi born. We know shortcuts, not just highways.' },
                 { k: 'Clean', v: 'Stays cleaned by us, laundry pressed by us. Same standard.' },
               ].map((pillar) => (
                 <div
@@ -92,10 +88,10 @@ export const AboutSection: React.FC = () => {
                 M-Pesa Accepted
               </span>
               <span className="px-3 py-1.5 rounded-full bg-white border border-black/10 text-[11px] font-bold tracking-wide">
-                Airbnb Superhost Track
+                Airbnb Superhost
               </span>
               <span className="px-3 py-1.5 rounded-full bg-white border border-black/10 text-[11px] font-bold tracking-wide">
-                Licensed Tour Driver • T&amp;L No.
+                Licensed Tour Driver
               </span>
             </div>
           </div>
@@ -104,15 +100,15 @@ export const AboutSection: React.FC = () => {
           <div className="mt-4 rounded-[20px] bg-[#0E0E0F] text-[#F5F1EB] p-6 flex items-center gap-4">
             <div className="flex -space-x-2">
               <div className="w-9 h-9 rounded-full bg-[#2E3A2F] border-2 border-[#0E0E0F] grid place-items-center text-[10px] font-bold">
-                JK
+                RK
               </div>
               <div className="w-9 h-9 rounded-full bg-[#FF5A2C] border-2 border-[#0E0E0F] grid place-items-center text-[10px] font-bold">
-                TO
+                ZT
               </div>
             </div>
             <div className="text-[12px] leading-tight">
               <div className="font-bold">You talk to a human in 1 call.</div>
-              <div className="opacity-60">No bot, no queue. Titus or driver on line.</div>
+              <div className="opacity-60">No bot, no queue. Rashid or driver on line.</div>
             </div>
           </div>
         </div>
