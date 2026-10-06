@@ -1,6 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { NAV_ITEMS } from '../../data/navigation';
+import { CONTACT_INFO } from '../../data/navigation';
+
+interface NavItemData {
+  num: string;
+  label: string;
+  href: string;
+}
+
+const TECH_NAV_ITEMS: NavItemData[] = [
+  { num: '01', label: 'Transport', href: '#transport' },
+  { num: '02', label: 'Accommodation', href: '#stays' },
+  { num: '03', label: 'Laundry', href: '#laundry' },
+  { num: '04', label: 'About', href: '#about' },
+];
 
 export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -21,69 +34,74 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 backdrop-blur-[18px] bg-[#0E0E0F]/75 border-b border-white/[0.06]">
-      <div className="mx-auto max-w-[1600px] px-6 md:px-10 h-[72px] flex items-center justify-between">
-        {/* Brand Logo & Desktop Links */}
-        <div className="flex items-center gap-10">
+    <nav className="sticky top-0 z-50 bg-[#000000] border-b border-white/[0.08] backdrop-blur-md">
+      <div className="mx-auto max-w-[1700px] px-4 sm:px-6 md:px-10 h-[56px] flex items-center justify-between">
+        
+        {/* Left: Brand Identity Text */}
+        <div className="flex items-center gap-4">
           <a
             href="#"
-            className="flex items-baseline gap-[1px]"
-            aria-label="ZAI Home"
-            onClick={closeMobileMenu}
+            className="flex items-center gap-2 group text-[11px] sm:text-[12px] font-mono font-bold tracking-[0.12em] sm:tracking-[0.16em] uppercase text-white/95 hover:text-white transition"
           >
-            <span className="text-[22px] font-black tracking-[-0.04em] leading-none">
-              ZAI
-            </span>
-            <span className="w-[6px] h-[6px] rounded-full bg-[#FF5A2C] ml-[1px] translate-y-[-8px] inline-block" />
+            <span>ZAI TOURS &amp; STAYS</span>
+            <span className="text-white/40 font-normal">—</span>
+            <span className="text-white/80">KILIFI, KE</span>
+            <span className="hidden sm:inline text-white/40 font-normal">—</span>
+            <span className="hidden sm:inline text-white/60">EST. 2022</span>
           </a>
-
-          <div className="hidden lg:flex items-center gap-8 text-[13px] font-medium tracking-wide">
-            {NAV_ITEMS.map((item) => (
-              <a
-                key={item.id}
-                href={item.id}
-                className="relative group py-2 opacity-70 hover:opacity-100 transition"
-              >
-                {item.label}
-                <span className="absolute left-0 -bottom-1 w-0 h-[1px] bg-[#F5F1EB] group-hover:w-full transition-all duration-300" />
-              </a>
-            ))}
-          </div>
         </div>
 
-        {/* Right CTA & Mobile Toggle */}
-        <div className="flex items-center gap-3">
+        {/* Center-Right: Boxed Monospace Nav Items & CTA */}
+        <div className="hidden lg:flex items-center gap-2 xl:gap-3">
+          {TECH_NAV_ITEMS.map((item) => (
+            <a
+              key={item.num}
+              href={item.href}
+              className="px-3.5 py-1.5 rounded-[5px] border border-white/15 bg-white/[0.02] hover:bg-white/[0.08] hover:border-white/35 text-[11.5px] font-mono text-white/80 hover:text-white transition-all duration-150 flex items-center gap-1.5"
+            >
+              <span className="text-white/45">[{item.num}]</span>
+              <span>{item.label}</span>
+            </a>
+          ))}
+
+          {/* Far Right: [BOOK NOW] Lime Yellow CTA */}
           <a
             href="#contact"
-            className="hidden md:inline-flex items-center gap-2 h-[40px] px-5 rounded-full bg-[#F5F1EB] text-[#0E0E0F] text-[13px] font-bold tracking-wide hover:bg-white transition"
+            className="ml-2 px-4 py-1.5 rounded-[5px] bg-[#D9FF00] text-black font-mono font-black text-[11.5px] tracking-wider uppercase hover:bg-[#c9ef00] transition-all shadow-md shadow-[#D9FF00]/15 inline-flex items-center justify-center"
           >
-            <span>Book in 1 Call</span>
-            <span className="w-5 h-5 rounded-full bg-[#0E0E0F] text-[#F5F1EB] grid place-items-center text-[12px]">
-              ↗
-            </span>
+            [BOOK NOW]
+          </a>
+        </div>
+
+        {/* Mobile Actions: Compact [BOOK NOW] & Hamburger Toggle */}
+        <div className="flex items-center gap-2 lg:hidden">
+          <a
+            href="#contact"
+            className="px-3 py-1 rounded-[5px] bg-[#D9FF00] text-black font-mono font-black text-[10.5px] tracking-wider uppercase"
+          >
+            [BOOK NOW]
           </a>
 
-          {/* Mobile Hamburger Button */}
           <button
             type="button"
             onClick={toggleMobileMenu}
             aria-label={mobileMenuOpen ? 'Close Menu' : 'Open Menu'}
-            className="lg:hidden w-10 h-10 rounded-full border border-white/15 grid place-items-center focus:outline-none"
+            className="w-8 h-8 rounded-[5px] border border-white/20 grid place-items-center focus:outline-none bg-white/[0.04]"
           >
-            <div className="w-[14px] h-[12px] relative">
+            <div className="w-[14px] h-[10px] relative">
               <span
-                className={`absolute left-0 w-full h-[1.5px] bg-white transition-all ${
-                  mobileMenuOpen ? 'top-[5px] rotate-45' : 'top-0'
+                className={`absolute left-0 w-full h-[1.5px] bg-white transition-all duration-200 ${
+                  mobileMenuOpen ? 'top-[4px] rotate-45' : 'top-0'
                 }`}
               />
               <span
-                className={`absolute left-0 top-[5px] w-full h-[1.5px] bg-white transition-opacity ${
+                className={`absolute left-0 top-[4px] w-full h-[1.5px] bg-white transition-opacity duration-200 ${
                   mobileMenuOpen ? 'opacity-0' : ''
                 }`}
               />
               <span
-                className={`absolute left-0 w-full h-[1.5px] bg-white transition-all ${
-                  mobileMenuOpen ? 'top-[5px] -rotate-45' : 'top-[10px]'
+                className={`absolute left-0 w-full h-[1.5px] bg-white transition-all duration-200 ${
+                  mobileMenuOpen ? 'top-[4px] -rotate-45' : 'top-[8px]'
                 }`}
               />
             </div>
@@ -95,34 +113,35 @@ export const Navbar: React.FC = () => {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="lg:hidden absolute inset-x-0 top-[72px] bg-[#0E0E0F] border-b border-white/10 px-6 py-10"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden bg-[#000000] border-b border-white/10 px-6 py-6"
           >
-            <div className="grid gap-6 text-[28px] font-black tracking-tight leading-[0.9]">
-              {NAV_ITEMS.map((item, idx) => (
-                <motion.a
-                  key={item.id}
-                  href={item.id}
+            <div className="grid gap-2 font-mono">
+              {TECH_NAV_ITEMS.map((item) => (
+                <a
+                  key={item.num}
+                  href={item.href}
                   onClick={closeMobileMenu}
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: idx * 0.05 }}
-                  className="flex justify-between items-center"
+                  className="px-4 py-3 rounded-[6px] border border-white/15 bg-white/[0.03] text-[13px] text-white/90 flex items-center justify-between"
                 >
                   <span>{item.label}</span>
-                  <span className="text-[#FF5A2C] text-[16px]">0{idx + 1}</span>
-                </motion.a>
+                  <span className="text-white/40">[{item.num}]</span>
+                </a>
               ))}
             </div>
 
             <a
-              href="#contact"
+              href={`https://wa.me/${CONTACT_INFO.whatsappNumber}?text=${encodeURIComponent(
+                'Hi Zai Tours & Stays, I would like to book.'
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={closeMobileMenu}
-              className="mt-8 flex h-[52px] items-center justify-center rounded-full bg-[#F5F1EB] text-[#0E0E0F] font-bold"
+              className="mt-4 flex h-[44px] items-center justify-center rounded-[6px] bg-[#D9FF00] text-black font-mono font-black text-[13px] tracking-wider uppercase"
             >
-              Book in 1 Call
+              [BOOK ON WHATSAPP]
             </a>
           </motion.div>
         )}
@@ -130,3 +149,4 @@ export const Navbar: React.FC = () => {
     </nav>
   );
 };
+
