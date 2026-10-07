@@ -20,9 +20,8 @@ export const StaysSection: React.FC = () => {
             </h2>
           </div>
 
-          <div className="max-w-[360px] text-[13px] md:text-[15px] leading-[1.5] opacity-60">
-            Curated Airbnbs within 15min of JKIA & SGR. Self check-in, fast WiFi, full kitchens.
-            Perfect for layovers, project stays, or soft landings.
+          <div className="max-w-[420px] text-[13px] md:text-[15px] leading-[1.5] opacity-70">
+            Curated Airbnbs. Self check-in, fast WiFi, full kitchens. Perfect for layovers, project stays, or soft landings. Studio: KES 2500, 1 Bedroom: KES 3500. Our Locations: Watamu, Kilifi Town, Eldoret Town, Nairobi. Make inquiries via WhatsApp (Instant reply).
           </div>
         </div>
 
@@ -131,21 +130,9 @@ export const StaysSection: React.FC = () => {
           })}
         </div>
 
-        {/* Footer Actions */}
+        {/* Footer Note */}
         <div className="mt-6 md:mt-10 flex flex-col md:flex-row flex-wrap gap-3 md:gap-4 items-start md:items-center md:justify-between">
-          <a
-            href={CONTACT_INFO.socials.airbnb}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 md:gap-3 h-[44px] md:h-[56px] px-5 md:px-8 rounded-full bg-[#0E0E0F] text-[#F5F1EB] font-bold text-[11px] md:text-[14px] hover:bg-black transition"
-          >
-            <span>View all on Airbnb</span>
-            <span className="w-5 h-5 md:w-7 md:h-7 rounded-full bg-[#FF5A2C] text-white grid place-items-center">
-              →
-            </span>
-          </a>
-
-          <div className="text-[10px] md:text-[12px] tracking-wide opacity-60 max-w-[420px]">
+          <div className="text-[10px] md:text-[12px] tracking-wide opacity-60 max-w-[600px]">
             All listings are Airbnb Superhost track, verified by Zai team. Instant book • Self
             check-in • M-Pesa accepted • Invoice available.
           </div>
