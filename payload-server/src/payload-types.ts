@@ -183,6 +183,10 @@ export interface Listing {
    */
   bedrooms: number;
   /**
+   * Location shown on the card, e.g. "Syokimau, Katani Rd"
+   */
+  location: string;
+  /**
    * Property features and amenities
    */
   features?:
@@ -199,6 +203,10 @@ export interface Listing {
    * URL to the Airbnb listing
    */
   airbnbLink: string;
+  /**
+   * Airbnb guest rating, from 1 to 5 (decimals allowed, e.g. 4.87)
+   */
+  airbnbRating?: number | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -352,6 +360,7 @@ export interface ListingsSelect<T extends boolean = true> {
   thumbnail?: T;
   capacity?: T;
   bedrooms?: T;
+  location?: T;
   features?:
     | T
     | {
@@ -360,6 +369,7 @@ export interface ListingsSelect<T extends boolean = true> {
       };
   pricePerNight?: T;
   airbnbLink?: T;
+  airbnbRating?: T;
   updatedAt?: T;
   createdAt?: T;
 }

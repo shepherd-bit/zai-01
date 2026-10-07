@@ -39,6 +39,14 @@ export const Listings: CollectionConfig = {
       },
     },
     {
+      name: 'location',
+      type: 'text',
+      required: true,
+      admin: {
+        description: 'Location shown on the card, e.g. "Syokimau, Katani Rd"',
+      },
+    },
+    {
       name: 'features',
       type: 'array',
       admin: {
@@ -68,7 +76,7 @@ export const Listings: CollectionConfig = {
       admin: {
         description: 'URL to the Airbnb listing',
       },
-      validate: (value: string | undefined) => {
+      validate: (value: string | null | undefined) => {
         if (!value) return true
         try {
           new URL(value)
@@ -76,6 +84,16 @@ export const Listings: CollectionConfig = {
         } catch {
           return 'Please enter a valid URL'
         }
+      },
+    },
+    {
+      name: 'airbnbRating',
+      type: 'number',
+      min: 1,
+      max: 5,
+      admin: {
+        description: 'Airbnb guest rating, from 1 to 5 (decimals allowed, e.g. 4.87)',
+        step: 0.01,
       },
     },
   ],

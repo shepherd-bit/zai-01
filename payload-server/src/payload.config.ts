@@ -14,6 +14,9 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
+  // Allow the frontend to read the public REST API cross-origin.
+  // Set CORS_ORIGIN (comma-separated origins) to restrict it in production.
+  cors: process.env.CORS_ORIGIN?.split(',').filter(Boolean) ?? '*',
   admin: {
     user: Users.slug,
     importMap: {

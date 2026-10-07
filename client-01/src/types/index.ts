@@ -1,14 +1,3 @@
-export interface Stay {
-  name: string;
-  type: string;
-  price: string;
-  location: string;
-  rating: string;
-  tag?: string;
-  amenities?: string[];
-  gradientPosition?: { x: number; y: number };
-}
-
 export interface LaundryService {
   title: string;
   price: string;
