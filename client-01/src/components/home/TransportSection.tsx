@@ -63,21 +63,21 @@ export const TransportSection: React.FC = () => {
               Airport Pickups
             </h3>
             <p className="relative mt-3 md:mt-4 max-w-[480px] text-[13px] md:text-[15px] leading-[1.6] text-white">
-              We pick you up from the airport in 1 call. Flight delayed? We track it.
-              Landing at 2am? We're awake. Fixed KES fare to Kilifi, Mombasa, Diani, Malindi.
+              We do pick up from Any Major Airports across Kenya.
             </p>
 
             <div className="relative mt-5 md:mt-8 flex flex-wrap gap-2 md:gap-3">
               <div className="h-[30px] md:h-[36px] px-3 md:px-4 rounded-full bg-[#F5F1EB] text-[#0E0E0F] text-[10px] md:text-[12px] font-bold grid place-items-center">
                 KQ, ET, QR tracked
               </div>
-              <div className="h-[30px] md:h-[36px] px-3 md:px-4 rounded-full border border-white/15 text-[10px] md:text-[12px] font-bold grid place-items-center">
-                From KES 2,500
-              </div>
             </div>
 
-            {/* Simulated Live Route Tracker */}
-            <div className="relative mt-6 md:mt-10 h-[140px] md:h-[180px] rounded-[16px] md:rounded-[20px] bg-gradient-to-br from-[#1E1E1E] to-[#101010] border border-white/[0.06] overflow-hidden flex items-end p-3 md:p-4">
+            {/* Simulated Live Route Tracker with large pricing integrated inside */}
+            <div className="relative mt-6 md:mt-10 h-[140px] md:h-[180px] rounded-[16px] md:rounded-[20px] bg-gradient-to-br from-[#1E1E1E] to-[#101010] border border-white/[0.06] overflow-hidden flex flex-col justify-between p-4 md:p-5">
+              <div className="flex justify-between items-center">
+                <span className="text-[10px] md:text-[12px] uppercase tracking-widest opacity-60 font-bold">Starting Fare</span>
+                <span className="text-[20px] md:text-[30px] font-black tracking-tight text-[#D9FF66]">From KES 2,500</span>
+              </div>
               <div className="w-full">
                 <div className="h-[2px] w-full bg-white/10 rounded-full overflow-hidden">
                   <motion.div
@@ -128,7 +128,7 @@ export const TransportSection: React.FC = () => {
               Car Hires
             </h3>
             <p className="relative mt-2 md:mt-3 text-[12px] md:text-[14px] leading-[1.6]">
-              Private tours with pro drivers who know every shortcut from Kilifi to Diani,
+              Private tours with pro drivers who know every fastest route from Kilifi to Diani,
               Malindi, Watamu, Mombasa. Fuel inclusive options.
             </p>
 
@@ -136,11 +136,16 @@ export const TransportSection: React.FC = () => {
               {FLEET_OPTIONS.map((car) => (
                 <div
                   key={car.name}
-                  className="rounded-[10px] md:rounded-[14px] bg-[#0E0E0F]/5 border border-black/5 p-2 md:p-3"
+                  className="rounded-[10px] md:rounded-[14px] bg-[#0E0E0F]/5 border border-black/5 p-2 md:p-3 flex flex-col justify-between"
                 >
-                  <div className="text-[10px] md:text-[12px] font-black leading-tight">{car.name}</div>
-                  <div className="text-[8px] md:text-[10px] opacity-60 uppercase tracking-wide">
-                    {car.seats}
+                  <div>
+                    <div className="text-[10px] md:text-[12px] font-black leading-tight">{car.name}</div>
+                    <div className="text-[8px] md:text-[10px] opacity-60 uppercase tracking-wide">
+                      {car.seats}
+                    </div>
+                  </div>
+                  <div className="mt-2 text-[9px] md:text-[11px] font-bold text-[#FF5A2C]">
+                    {car.name.toLowerCase().includes('alphard') ? 'From KES 12,000' : car.name.toLowerCase().includes('prado') ? 'From KES 15,000' : 'From KES 10,000'}
                   </div>
                 </div>
               ))}
@@ -186,7 +191,7 @@ export const TransportSection: React.FC = () => {
 
               <div className="mt-4 md:mt-6 flex flex-wrap gap-1.5 md:gap-2">
                 <span className="px-2 py-0.5 md:px-3 md:py-1 rounded-full bg-[#D9FF66] text-[#0E0E0F] text-[9px] md:text-[11px] font-bold">
-                  Fixed KES 1,500
+                  Starting from KES 1,000
                 </span>
                 <span className="px-2 py-0.5 md:px-3 md:py-1 rounded-full bg-white/10 border border-white/10 text-[9px] md:text-[11px] font-bold">
                   Platform pickup
