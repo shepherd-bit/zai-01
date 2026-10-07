@@ -7,82 +7,93 @@ interface GalleryImage {
   title: string;
   location: string;
   tag: string;
+  // Width class or style hint for natural varying widths at a uniform height
+  widthClass: string;
 }
 
 /**
- * Placeholder tour imagery — swap `src` values for real assets in /public
- * when the final gallery shots are ready.
+ * Gallery imagery with uniform height and varying widths (landscape, square, portrait)
  */
 const GALLERY_IMAGES: GalleryImage[] = [
   {
-    src: 'https://picsum.photos/seed/zai-gallery-01/900/1125',
+    src: 'https://picsum.photos/seed/zai-gallery-01/900/1125', // Portrait
     alt: 'Traditional dhow sailing on Kilifi creek at sunset',
     title: 'Kilifi Creek Sunset',
     location: 'Kilifi, KE',
     tag: 'Dhow Ride',
+    widthClass: 'w-[280px] md:w-[340px]',
   },
   {
-    src: 'https://picsum.photos/seed/zai-gallery-02/900/1125',
+    src: 'https://picsum.photos/seed/zai-gallery-02/1000/1000', // Square
     alt: 'Snorkeling over coral reefs in Watamu marine park',
     title: 'Watamu Marine Park',
     location: 'Watamu, KE',
     tag: 'Snorkel',
+    widthClass: 'w-[320px] md:w-[380px]',
   },
   {
-    src: 'https://picsum.photos/seed/zai-gallery-03/900/1125',
+    src: 'https://picsum.photos/seed/zai-gallery-03/1200/800', // Landscape (wider)
     alt: 'White sand beach day on the south coast of Diani',
     title: 'Diani Beach Day',
     location: 'Diani, KE',
     tag: 'South Coast',
+    widthClass: 'w-[380px] md:w-[460px]',
   },
   {
-    src: 'https://picsum.photos/seed/zai-gallery-04/900/1125',
+    src: 'https://picsum.photos/seed/zai-gallery-04/900/1350', // Tall Portrait
     alt: 'Historic streets and architecture of Malindi old town',
     title: 'Malindi Old Town',
     location: 'Malindi, KE',
     tag: 'Culture',
+    widthClass: 'w-[260px] md:w-[320px]',
   },
   {
-    src: 'https://picsum.photos/seed/zai-gallery-05/900/1125',
+    src: 'https://picsum.photos/seed/zai-gallery-05/1100/1100', // Square
     alt: 'Walking trail through Arabuko Sokoke forest',
     title: 'Arabuko Sokoke',
     location: 'Kilifi, KE',
     tag: 'Forest Trail',
+    widthClass: 'w-[320px] md:w-[380px]',
   },
   {
-    src: 'https://picsum.photos/seed/zai-gallery-06/900/1125',
+    src: 'https://picsum.photos/seed/zai-gallery-06/1200/750', // Wide Landscape
     alt: 'Coastal view from the SGR Madaraka Express train',
     title: 'SGR Coastal Ride',
     location: 'Mombasa Line',
     tag: 'Train Trip',
+    widthClass: 'w-[400px] md:w-[480px]',
   },
   {
-    src: 'https://picsum.photos/seed/zai-gallery-07/900/1125',
+    src: 'https://picsum.photos/seed/zai-gallery-07/900/1125', // Portrait
     alt: 'Bird watching by the water at Mida creek',
     title: 'Mida Creek',
     location: 'Watamu, KE',
     tag: 'Birding',
+    widthClass: 'w-[280px] md:w-[340px]',
   },
   {
-    src: 'https://picsum.photos/seed/zai-gallery-08/900/1125',
+    src: 'https://picsum.photos/seed/zai-gallery-08/1200/900', // Landscape
     alt: 'Ancient baobab trees on the Kilifi hinterland trail',
     title: 'Baobab Trail',
     location: 'Kilifi, KE',
     tag: 'Day Trip',
+    widthClass: 'w-[360px] md:w-[440px]',
   },
   {
-    src: 'https://picsum.photos/seed/zai-gallery-09/900/1125',
+    src: 'https://picsum.photos/seed/zai-gallery-09/900/1200', // Portrait
     alt: 'City tour around Fort Jesus in Mombasa',
     title: 'Fort Jesus Run',
     location: 'Mombasa, KE',
     tag: 'City Tour',
+    widthClass: 'w-[280px] md:w-[340px]',
   },
   {
-    src: 'https://picsum.photos/seed/zai-gallery-10/900/1125',
+    src: 'https://picsum.photos/seed/zai-gallery-10/1000/1000', // Square
     alt: 'Quiet private cove at Tiwi beach',
     title: 'Tiwi Beach Escape',
     location: 'Tiwi, KE',
     tag: 'Hidden Cove',
+    widthClass: 'w-[320px] md:w-[380px]',
   },
 ];
 
@@ -108,7 +119,6 @@ export const Gallery: React.FC = () => {
     setCanNext(el.scrollLeft < max - 4);
 
     if (max > 0 && max - el.scrollLeft <= 4) {
-      // At the end the last card is right-aligned, not left-aligned.
       setCurrent(GALLERY_IMAGES.length);
       return;
     }
@@ -192,18 +202,19 @@ export const Gallery: React.FC = () => {
           </div>
         </div>
 
-        {/* Carousel Track — native scroll + snap gives mobile swipe for free */}
+        {/* Carousel Track — Uniform height with variable natural widths */}
         <div
           ref={trackRef}
-          className="mt-8 md:mt-14 flex gap-4 md:gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth select-none pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="mt-8 md:mt-14 flex items-center gap-4 md:gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth select-none pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {GALLERY_IMAGES.map((image, idx) => (
             <motion.figure
               key={image.src}
               whileHover={{ y: -6 }}
-              className="group relative shrink-0 w-[78%] sm:w-[46%] lg:w-[31%] xl:w-[24%] snap-start"
+              className={`group relative shrink-0 ${image.widthClass} snap-start`}
             >
-              <div className="relative aspect-[4/5] rounded-[20px] md:rounded-[28px] overflow-hidden bg-[#151515] border border-white/[0.07]">
+              {/* Fixed uniform height across all cards (e.g. h-[380px] on mobile, h-[460px] on desktop) */}
+              <div className="relative h-[380px] md:h-[460px] rounded-[20px] md:rounded-[28px] overflow-hidden bg-[#151515] border border-white/[0.07]">
                 {/* Fallback emblem shown while an image loads or if it fails */}
                 <div aria-hidden="true" className="absolute inset-0 grid place-items-center">
                   <div className="w-14 h-14 md:w-16 md:h-16 rounded-full border border-white/10 grid place-items-center text-white/25 text-[14px] md:text-[16px]">
