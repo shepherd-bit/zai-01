@@ -2,7 +2,9 @@ import React from 'react';
 import { CONTACT_INFO } from '../../data/navigation';
 
 export const Footer: React.FC = () => {
-  const whatsappUrl = `https://wa.me/${CONTACT_INFO.whatsappNumber}`;
+  const phoneNumber = '254729115021';
+  const displayPhoneNumber = '+254 729 115 021';
+  const whatsappUrl = `https://wa.me/${phoneNumber}`;
 
   return (
     <footer id="contact" className="relative bg-[#0E0E0F] text-[#F5F1EB] pt-16 md:pt-20 pb-8 md:pb-10">
@@ -21,7 +23,7 @@ export const Footer: React.FC = () => {
             </h2>
 
             <div className="mt-6 md:mt-8 grid md:grid-cols-2 gap-5 md:gap-6">
-              {/* Physical Location Card (Moved to the middle / first card slot) */}
+              {/* Physical Location Card */}
               <div className="rounded-[20px] md:rounded-[24px] bg-[#F5F1EB] text-[#0E0E0F] p-5 md:p-6">
                 <div className="text-[9px] md:text-[11px] tracking-widest uppercase opacity-50 font-bold">
                   Location
@@ -39,13 +41,13 @@ export const Footer: React.FC = () => {
                 </div>
               </div>
 
-              {/* WhatsApp & Call Direct Box (Moved to the far right card slot) */}
+              {/* WhatsApp & Call Direct Box */}
               <div className="rounded-[20px] md:rounded-[24px] bg-[#151515] border border-white/[0.07] p-5 md:p-6">
                 <div className="text-[9px] md:text-[11px] tracking-widest uppercase opacity-50 font-bold">
                   Call / WhatsApp
                 </div>
                 <div className="mt-2 font-black text-[19px] md:text-[22px] tracking-tight">
-                  {CONTACT_INFO.displayPhone}
+                  {displayPhoneNumber}
                 </div>
                 <div className="mt-1 text-[11px] md:text-[13px] opacity-60">
                   Response under 15min • 24/7 MBA
