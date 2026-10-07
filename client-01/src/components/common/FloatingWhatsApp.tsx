@@ -2,13 +2,16 @@ import React from 'react';
 import { motion } from 'motion/react';
 
 interface FloatingWhatsAppProps {
-  href: string;
+  href?: string;
 }
 
-export const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({ href }) => {
+export const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = () => {
+  const phoneNumber = '254729115021';
+  const whatsappUrl = `https://wa.me/${phoneNumber}`;
+
   return (
     <motion.a
-      href={href}
+      href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Direct WhatsApp Chat with ZAI team"
