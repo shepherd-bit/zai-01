@@ -13,6 +13,7 @@ import { TransportSection } from './components/home/TransportSection';
 import { StaysSection } from './components/home/StaysSection';
 import { LaundrySection } from './components/home/LaundrySection';
 import { AboutSection } from './components/home/AboutSection';
+import { Gallery } from './components/home/Gallery';
 import { Footer } from './components/layout/Footer';
 import { CONTACT_INFO } from './data/navigation';
 
@@ -39,6 +40,7 @@ export default function App() {
         <StaysSection />
         <LaundrySection />
         <AboutSection />
+        <Gallery />
       </main>
 
       {/* Footer and contact section */}
