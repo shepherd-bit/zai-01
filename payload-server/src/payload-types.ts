@@ -71,6 +71,7 @@ export interface Config {
     media: Media;
     listings: Listing;
     'laundry-rates': LaundryRate;
+    gallery: Gallery;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -82,6 +83,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     listings: ListingsSelect<false> | ListingsSelect<true>;
     'laundry-rates': LaundryRatesSelect<false> | LaundryRatesSelect<true>;
+    gallery: GallerySelect<false> | GallerySelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -229,6 +231,29 @@ export interface LaundryRate {
   createdAt: string;
 }
 /**
+ * Photo posts shown in the gallery
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "gallery".
+ */
+export interface Gallery {
+  id: number;
+  /**
+   * Example: upload a photo such as "fort-jesus-sunset.jpg" — this is the picture that shows in the gallery
+   */
+  image: number | Media;
+  /**
+   * Where the photo was taken
+   */
+  location: string;
+  /**
+   * Optional landmark or spot within that location
+   */
+  site?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
@@ -267,6 +292,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'laundry-rates';
         value: number | LaundryRate;
+      } | null)
+    | ({
+        relationTo: 'gallery';
+        value: number | Gallery;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -381,6 +410,17 @@ export interface LaundryRatesSelect<T extends boolean = true> {
   itemName?: T;
   price?: T;
   description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "gallery_select".
+ */
+export interface GallerySelect<T extends boolean = true> {
+  image?: T;
+  location?: T;
+  site?: T;
   updatedAt?: T;
   createdAt?: T;
 }
