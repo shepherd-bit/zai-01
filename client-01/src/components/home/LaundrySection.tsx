@@ -1,11 +1,40 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { motion } from 'motion/react';
-import { LAUNDRY_SERVICES } from '../../data/laundry';
+import {
+  fetchLaundryRates,
+  formatPrice,
+  LaundryRate,
+  rateIcon,
+  unitLabel,
+} from '../../api/laundryRates';
 import { FreshLabVisual } from './FreshLabVisual';
+
+type LoadStatus = 'loading' | 'ready' | 'error';
 
 export const LaundrySection: React.FC = () => {
   const [pickupEnabled, setPickupEnabled] = useState(false);
   const [tapCount, setTapCount] = useState(0);
+
+  const [rates, setRates] = useState<LaundryRate[]>([]);
+  const [status, setStatus] = useState<LoadStatus>('loading');
+
+  const load = useCallback(async (signal?: AbortSignal) => {
+    setStatus('loading');
+    try {
+      const docs = await fetchLaundryRates(signal);
+      setRates(docs);
+      setStatus('ready');
+    } catch (error) {
+      if ((error as Error)?.name === 'AbortError') return;
+      setStatus('error');
+    }
+  }, []);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    load(controller.signal);
+    return () => controller.abort();
+  }, [load]);
 
   const handleSelectDropoff = () => {
     setPickupEnabled(false);
@@ -86,31 +115,51 @@ export const LaundrySection: React.FC = () => {
             </div>
 
             {/* Pricing Cards Grid */}
-            <div className="mt-6 md:mt-10 grid sm:grid-cols-2 gap-3 md:gap-4">
-              {LAUNDRY_SERVICES.map((service) => (
-                <motion.div
-                  key={service.title}
-                  whileHover={{ scale: 1.02 }}
-                  className="group relative rounded-[16px] md:rounded-[22px] bg-[#151515] border border-white/[0.07] p-4 md:p-6 hover:border-white/20 transition-colors"
-                >
-                  <div className="flex justify-between items-start">
-                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/[0.06] border border-white/10 grid place-items-center text-[12px] md:text-[14px]">
-                      {service.icon}
-                    </div>
-                    <span className="text-[9px] md:text-[11px] px-1.5 md:px-2 py-0.5 md:py-1 rounded-full bg-[#D9FF66]/15 text-[#D9FF66] border border-[#D9FF66]/20 font-bold tracking-wide">
-                      {service.unit}
-                    </span>
-                  </div>
+            <div className="mt-6 md:mt-10">
+              {status === 'loading' && <LoadingCards />}
 
-                  <div className="mt-2.5 md:mt-4 font-bold tracking-tight leading-tight">
-                    {service.title}
-                  </div>
-                  <div className="mt-1 flex items-baseline gap-1.5 md:gap-2">
-                    <span className="text-[20px] md:text-[26px] font-black tracking-tight">{service.price}</span>
-                    <span className="text-[10px] md:text-[12px] opacity-50">{service.desc}</span>
-                  </div>
-                </motion.div>
-              ))}
+              {status === 'error' && <ErrorPanel onRetry={() => load()} />}
+
+              {status === 'ready' && rates.length === 0 && <EmptyPanel />}
+
+              {status === 'ready' && rates.length > 0 && (
+                <div className="grid sm:grid-cols-2 gap-3 md:gap-4">
+                  {rates.map((rate, idx) => (
+                    <motion.div
+                      key={String(rate.id)}
+                      initial={{ opacity: 0, y: 16 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: '-60px' }}
+                      transition={{ delay: (idx % 4) * 0.06 }}
+                      whileHover={{ scale: 1.02 }}
+                      className="group relative rounded-[16px] md:rounded-[22px] bg-[#151515] border border-white/[0.07] p-4 md:p-6 hover:border-white/20 transition-colors"
+                    >
+                      <div className="flex justify-between items-start">
+                        <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/[0.06] border border-white/10 grid place-items-center text-[12px] md:text-[14px]">
+                          {rateIcon(idx)}
+                        </div>
+                        <span className="text-[9px] md:text-[11px] px-1.5 md:px-2 py-0.5 md:py-1 rounded-full bg-[#D9FF66]/15 text-[#D9FF66] border border-[#D9FF66]/20 font-bold tracking-wide">
+                          {unitLabel(rate)}
+                        </span>
+                      </div>
+
+                      <div className="mt-2.5 md:mt-4 font-bold tracking-tight leading-tight">
+                        {rate.itemName}
+                      </div>
+                      <div className="mt-1 flex items-baseline gap-1.5 md:gap-2">
+                        <span className="text-[20px] md:text-[26px] font-black tracking-tight">
+                          {formatPrice(rate.price)}
+                        </span>
+                        {rate.description && (
+                          <span className="text-[10px] md:text-[12px] opacity-50">
+                            {rate.description}
+                          </span>
+                        )}
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Quality Standard Badges */}
@@ -131,3 +180,56 @@ export const LaundrySection: React.FC = () => {
     </section>
   );
 };
+
+/** Skeleton cards while the laundry rates request is in flight. */
+const LoadingCards: React.FC = () => (
+  <div className="grid sm:grid-cols-2 gap-3 md:gap-4" aria-hidden="true">
+    {[0, 1, 2, 3].map((i) => (
+      <div
+        key={i}
+        className="rounded-[16px] md:rounded-[22px] bg-[#151515] border border-white/[0.07] p-4 md:p-6 animate-pulse"
+      >
+        <div className="flex justify-between items-start">
+          <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/[0.06]" />
+          <div className="h-4 w-16 rounded-full bg-white/[0.06]" />
+        </div>
+        <div className="mt-4 h-3.5 w-32 rounded-full bg-white/[0.08]" />
+        <div className="mt-2.5 h-6 w-40 rounded-full bg-white/[0.06]" />
+      </div>
+    ))}
+  </div>
+);
+
+/** Shown when the collection is empty — no rates have been posted yet. */
+const EmptyPanel: React.FC = () => (
+  <div className="rounded-[16px] md:rounded-[22px] border border-white/10 bg-[#151515] px-6 py-12 md:py-16 text-center">
+    <div className="font-black tracking-[-0.05em] leading-none text-[26px] md:text-[44px]">
+      RATES COMING <span className="text-[#D9FF66]">SOON</span>
+    </div>
+    <p className="mx-auto mt-3 max-w-[420px] text-[11px] md:text-[13px] leading-relaxed text-white/50">
+      The price list is being set up. Post your first rate in the Payload admin dashboard and it
+      will show up here automatically.
+    </p>
+  </div>
+);
+
+/** Shown when the Payload API cannot be reached. */
+const ErrorPanel: React.FC<{ onRetry: () => void }> = ({ onRetry }) => (
+  <div className="rounded-[16px] md:rounded-[22px] border border-white/10 bg-[#151515] px-6 py-12 md:py-16 text-center">
+    <div className="font-black tracking-[-0.05em] leading-none text-[24px] md:text-[40px]">
+      COULDN'T LOAD <span className="text-[#D9FF66]">RATES</span>
+    </div>
+    <p className="mx-auto mt-3 max-w-[420px] text-[11px] md:text-[13px] leading-relaxed text-white/50">
+      The laundry rates service didn't respond. Check that the Payload server is running, then try
+      again.
+    </p>
+    <button
+      type="button"
+      onClick={onRetry}
+      className="mt-5 inline-flex items-center gap-2 h-[34px] px-5 rounded-full bg-[#D9FF66] text-[#0E0E0F] text-[11px] font-bold tracking-wide hover:brightness-95 transition"
+    >
+      Retry
+      <span className="w-5 h-5 rounded-full bg-black/15 grid place-items-center text-[10px]">→</span>
+    </button>
+  </div>
+);

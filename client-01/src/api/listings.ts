@@ -1,14 +1,9 @@
 /**
  * Payload REST client for the `listings` collection.
  *
- * Dev: the Vite app runs on :3001 and Payload on :3000, so requests go to the
- *      Payload origin directly (CORS is enabled in payload.config.ts).
- * Prod: set VITE_API_URL to the deployed Payload origin, or serve this app from
- *      the same domain as Payload and leave it unset.
+ * The origin comes from `client.ts` — see that file for the dev/prod rules.
  */
-const API_ORIGIN = (
-  import.meta.env.VITE_API_URL ?? (import.meta.env.DEV ? 'http://localhost:3000' : '')
-).replace(/\/+$/, '');
+import { API_ORIGIN } from './client';
 
 export interface ListingImage {
   id: number | string;
