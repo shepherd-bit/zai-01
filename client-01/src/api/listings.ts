@@ -3,7 +3,9 @@
  *
  * The origin comes from `client.ts` — see that file for the dev/prod rules.
  */
-import { API_ORIGIN } from './client';
+import { API_ORIGIN, mediaUrl } from './client';
+
+export { mediaUrl };
 
 export interface ListingImage {
   id: number | string;
@@ -46,13 +48,6 @@ export async function fetchListings(signal?: AbortSignal): Promise<Listing[]> {
 
   const data = (await response.json()) as ListingsResponse;
   return data.docs ?? [];
-}
-
-/** Resolve a Payload media path (`/api/media/file/x.jpg`) into a full URL. */
-export function mediaUrl(src?: string | null): string {
-  if (!src) return '';
-  if (/^(?:https?:)?\/\//.test(src) || src.startsWith('data:')) return src;
-  return `${API_ORIGIN}${src}`;
 }
 
 /** Thumbnail URL for a listing, or '' when the image is missing/unpopulated. */

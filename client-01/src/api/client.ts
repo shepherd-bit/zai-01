@@ -9,3 +9,10 @@
 export const API_ORIGIN = (
   import.meta.env.VITE_API_URL ?? (import.meta.env.DEV ? 'http://localhost:3000' : '')
 ).replace(/\/+$/, '');
+
+/** Resolve a Payload media path (`/api/media/file/x.jpg`) into a full URL. */
+export function mediaUrl(src?: string | null): string {
+  if (!src) return '';
+  if (/^(?:https?:)?\/\//.test(src) || src.startsWith('data:')) return src;
+  return `${API_ORIGIN}${src}`;
+}
